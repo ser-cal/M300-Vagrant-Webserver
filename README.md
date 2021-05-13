@@ -42,7 +42,7 @@ Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls n
   ![Variablen](images/02_Systemvariable-f-vagrant.png)
 
 
-gest
+gehh
 
 
 
