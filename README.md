@@ -35,11 +35,11 @@ Bevor wir loslegen checken wir, ob Vagrant, Virtualbox und SSH installiert ist.
 
 ...kann in der GitBash ausgeführt werden (siehe folgendes Bild). Es spielt in diesem Fall noch keine Rolle, in welchem Verzeichnis man sich befindet. 
 
-  ![Git Befehle](images/01_vagrant-vb-ssh_v2.png)
+  ![Commands](images/01_vagrant-vb-ssh_v2.png)
 
 Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls noch die PATH-Variable angepasst werden (siehe folgendes Bild). Dasselbe gilt auch für "vboxmanage" (Virtualbox)
 
-  ![Git Befehle](images/02_Systemvariable-f-vagrant.png)
+  ![Variablen](images/02_Systemvariable-f-vagrant.png)
 
 
 gest
