@@ -39,7 +39,7 @@ Bevor wir loslegen checken wir, ob Vagrant, Virtualbox und SSH installiert ist.
 
 Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls noch die PATH-Variable angepasst werden (siehe folgendes Bild). Dasselbe gilt auch für "vboxmanage" (Virtualbox)
 
-  ![Variablen](images/02_Systemvariable-f-vagrant.png)
+  ![Variablen](images/01_Was-ist-GIT.jpg)
 
 
 gehh
