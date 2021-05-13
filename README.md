@@ -41,6 +41,7 @@ Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls n
 
   ![Variablen](images/01_Was-ist-GIT.jpg)
 
+  ![Variablen](images/01_vagrant-vb-ssh.png)
 
 gehh
 
