@@ -30,17 +30,16 @@ Vagrant ist sehr gut geeignet, um schnell und unkompliziert Testumgebungen aufzu
 
 ### Preflight Checks
 
-Bevor wir loslegen zuerst checken, ob Vagrant, Virtualbox und SSH installiert ist. Wir verwenden hier die "Gitbash" auf Windows. Es spielt in diesem Fall noch keine Rolle, in welchem Verzeichnis wir uns befinden. 
+Bevor wir loslegen zuerst checken, ob Vagrant, Virtualbox und SSH installiert ist. Wir verwenden hier die "Gitbash" auf Windows. Es spielt im Moment noch keine Rolle, in welchem Verzeichnis wir uns befinden. 
 
 > `$ vagrant -v ` _Checken, welche Vagrant-Version installiert ist_<br>
 > `$ vboxmanage -v  ` _checken, welche Virtualbox-Version installiert ist_ <br>
-> `$ ssh  ` _Checken, ob SSH installiert ist_ <br>
+> `$ ssh  ` _Checken, ob SSH installiert ist_<br>
   ![Screenshot](images/01_vagrant-vb-ssh.jpg) 
 
 
 ### PATH-Variable anpassen / ergänzen (nur bei Bedarf)
 Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls noch die PATH-Variable angepasst werden (siehe folgendes Bild). Dasselbe gilt auch für "vboxmanage" (Virtualbox)
-
   ![Screenshot](images/02_Systemvariable-f-vagrant.jpg)
 
 ### Setup erstes Projekt (Ubuntu-VM)
@@ -53,7 +52,7 @@ Mit folgenden Schritten das Verzeichnis für die erste mit Vagrant erstellte Ubu
   ![Screenshot](images/03_gitbash_ubuntu-verz_erstellen.png)
 
 
-Mit folgendem Kommando wird im aktuellen Verzeichnis ein Vagrantfile erstellt:
+Im aktuellen Verzeichnis ein Vagrantfile (für das OS Ubuntu Precise32) erstellen:
 > `$ vagrant init hashicorp/precise32 ` <br>
   ![Screenshot](images/11_gitbash_ubuntu-vagrantfile-erst.png)
 
@@ -61,11 +60,16 @@ Mit folgendem Kommando wird im aktuellen Verzeichnis ein Vagrantfile erstellt:
 > `$ ls -ali `
   ![Screenshot](images/11b_gitbash_ubuntu-vagrantfile-erst.png)
 
-Config-file öffnen mit Editor und checken
+Config-file mit Editor öffnen und ckecken
 > `$ vim Vagrantfile ` _Inhalt anschauen_<br>
   ![Screenshot](images/12_gitbash_ubuntu-vagrantfile-inhalt.png)
 <br>
 
+### VM starten und überprüfen
+Wenn soweit alles ok ist, können wir die VM wie folgt zum ersten Mal starten 
+> `$ vagrant up ` _Virtualbox-VM mit Vagrant starten_<br>
+  ![Screenshot](images/13_gitbash_ubuntu-vm-mit-Vagrant_inst.png)
+<br>
 
 In VM "hüpfen" und überprüfen
 > `$ vagrant ssh ` _in die Ubuntu-VM "hüpfen"_<br>
@@ -74,10 +78,12 @@ In VM "hüpfen" und überprüfen
   ![Screenshot](images/14_gitbash_mit_ssh_auf_Ubuntu-VM.png)
 <br>
 
-VM zum ersten Mal starten 
-> `$ vagrant up ` _Virtualbox-VM mit Vagrant starten_<br>
-  ![Screenshot](images/13_gitbash_ubuntu-vm-mit-Vagrant_inst.png)
+VM vom Host aus überprüfen
+> `$ exit ` _aus der VM zurück auf den Host_<br>
+> `$ vboxmanage list runningvms  ` _checken, welche Virtualbox-VMs am Laufen sind_ <br>
+  ![Screenshot](images/15_gitbash_Virtualbox_Ubuntu-VM.png)
 <br>
+
 
 
 
