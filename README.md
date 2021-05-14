@@ -102,8 +102,8 @@ Wenn das Virtualbox-Fenster erscheint, hier noch ein "Hint", wie man aus dem "Ma
 ```
 1. "Pfeil nach unten"-Taste gleichzeitig mit 
 2. "Pfeil nach rechts"-Taste drücken
-3.  Erst wenn die ersten beiden Tasten gedrückt sind, die 
-	"Ctrl“-Taste drücken (alle drei Tasten zusammen)
+3.  Erst wenn die ersten beiden Tasten gedrückt sind, die
+    "Ctrl"-Taste drücken (alle drei Tasten zusammen)
 ```
   ![Screenshot](images/18_Maustaste_gefangen_loesen.png)
 
