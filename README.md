@@ -19,40 +19,37 @@ Vagrant ist sehr gut geeignet, um schnell und unkompliziert Testumgebungen aufzu
 
 
 ## Das folgende Dokument ist wie folgt strukturiert:
-1. Der **ersten Abschnitt** **[Vagrant](#vagrant)** ist als Einstieg gedacht. Wir installieren einen Apache-Webserver und besprechen anschliessend die wichtigsten Vagrant-Kommandos. Nach Abschluss dieses Kapitels sollten Dir die gängigsten Vagrant-Befehle vertraut sein, und Du hast erfolgreich eine erste Vagrantbox aufgesetzt und zum Laufen gebracht  
+1. Im **ersten Abschnitt** **[Vagrant Einsteig](#vagrant-einstieg)** machen wir uns einwenig mit "Vagrant" vertraut. Wir installieren mit einem ersten einfachen deklarativen Script (Vagrantfile) eine Ubuntu-VM und setzen dabei gleich die ersten Vagrant-Kommandos "Hands-on" ein. Nach Abschluss dieses Kapitels sollten Dir die gängigsten Vagrant-Befehle vertraut sein, und Du hast erfolgreich eine erste Vagrantbox aufgesetzt, zum Laufen gebracht und wieder "zerstört" (gelöscht)
 
-2. Im **zweiten Abschnitt** **[NGINX-Webserver deklarativ aufsetzen](#nginx-webserver-deklarativ-aufsetzen)** setzen wir Schritt für Schritt einen NGINX-Webserver auf - und zwar so, dass diese Umgebung jederzeit gelöscht und wieder erstellt werden kann. Auch auf einer anderen Umgebung. Der Webseitencontent wird somit persistiert und es kann auch nach einem "Destroy" und einer Neuinstallation wieder auf diese Daten zurückgegriffen werden
+2. Im **zweiten Abschnitt** **[NGINX-Webserver deklarativ aufsetzen](#nginx-webserver-deklarativ-aufsetzen)** geht bereits ein erstes Mal zur Sache. Wir setzen Schritt für Schritt einen NGINX-Webserver auf - und zwar so, dass diese Umgebung jederzeit gelöscht und in kürzester Zeit wieder erstellt werden kann. Auch auf einer anderen Umgebung. Der Webseitencontent wird somit persistiert und es kann auch nach einem "Destroy" und einer Neuinstallation wieder auf den früher erstellten Content zugegriffen werden. 
 
 
 ---
 
+## Vagrant Einstieg
 
-## Preflight Checks ##
-#### Commands 
-Bevor wir loslegen checken wir, ob Vagrant, Virtualbox und SSH installiert ist.
+### Preflight Checks
+
+Bevor wir loslegen zuerst checken, ob Vagrant, Virtualbox und SSH installiert ist. Wir verwenden hier die "Gitbash" auf Windows. Es spielt in diesem Fall noch keine Rolle, in welchem Verzeichnis wir uns befinden. 
 
 > `$ vagrant -v ` _Checken, welche Vagrant-Version installiert ist_<br>
 > `$ vboxmanage -v  ` _checken, welche Virtualbox-Version installiert ist_ <br>
 > `$ ssh  ` _Checken, ob SSH installiert ist_ <br>
+  ![Screenshot](images/01_vagrant-vb-ssh.jpg) 
 
-...kann in der GitBash ausgeführt werden (siehe folgendes Bild). Es spielt in diesem Fall noch keine Rolle, in welchem Verzeichnis man sich befindet. 
 
-  ![Screenshot](images/01_vagrant-vb-ssh.jpg)
-
+### PATH-Variable anpassen / ergänzen (nur bei Bedarf)
 Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls noch die PATH-Variable angepasst werden (siehe folgendes Bild). Dasselbe gilt auch für "vboxmanage" (Virtualbox)
 
   ![Screenshot](images/02_Systemvariable-f-vagrant.jpg)
 
-
+### Setup erstes Projekt (Ubuntu-VM)
 Mit folgenden Schritten das Verzeichnis für die erste mit Vagrant erstellte Ubuntu-VM vorbereiten
 
 > `$ cd <Projekt-Mutterverzeichnis> ` _ins Mutterverzeichnis des vorgesehenen Projektes wechseln_<br>
 > `$ pwd  ` _kontrolle, ob im richtigen Verzeichnis_ <br>
-> `$ mkdir ubuntu  ` _Projektverzeichnis "ubuntu" anlegen_ 
-> `$ cd ubuntu  ` _in's Verzeichnis wechseln_
-
-Screenshot (Gitbash auf Windows)
-
+> `$ mkdir ubuntu  ` _Projektverzeichnis "ubuntu" anlegen_ <br> 
+> `$ cd ubuntu  ` _in's Verzeichnis "ubuntu" wechseln_
   ![Screenshot](images/03_gitbash_ubuntu-verz_erstellen.png)
 
 
