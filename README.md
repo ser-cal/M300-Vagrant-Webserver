@@ -50,7 +50,7 @@ Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls n
   ![Variablen](images/03_gitbash_ubuntu-verz_erstellen.png)
 
 
-
+sdfsdf
 
 
 
