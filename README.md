@@ -56,7 +56,7 @@ Screenshot (Gitbash auf Windows)
   ![Screenshot](images/03_gitbash_ubuntu-verz_erstellen.png)
 
 
-Mit folgendem Kommando wird im aktuellen Verzeichnis ein vagrantfile erstellt:
+Mit folgendem Kommando wird im aktuellen Verzeichnis ein Vagrantfile erstellt:
 
 ```
 $ vagrant init hashicorp/precise32
@@ -64,16 +64,24 @@ $ vagrant init hashicorp/precise32
 Screenshot (Gitbash auf Windows)
   ![Screenshot](images/11_gitbash_ubuntu-vagrantfile-erst.png)
 
+> `$ ls -ali ` _überprüfen ob vorhanden_<br>
+
+  ![Screenshot](images/11b_gitbash_ubuntu-vagrantfile-erst.png)
+
+Config-file checken
+> `$ vim Vagrantfile ` _Inhalt anschauen_<br>
+
+  ![Screenshot](images/12_gitbash_ubuntu-vagrantfile-inhalt.png)
+<br>
 
 
+VM überprüfen
+> `$ vagrant ssh ` _in die Ubuntu-VM "hüpfen"_<br>
+> `$ uname -a  ` _Checken, ob Ubuntu_ <br>
+> `$ df -h  ` _Diskfree Human-readable_ <br>
 
-
-
-
-
-
-
-
+  ![Screenshot](images/13_gitbash_ubuntu-vm-mit Vagrant_inst.png)
+<br>
 
 
 
