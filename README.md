@@ -47,7 +47,7 @@ Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls n
 ....HIER weiterarbeiten
 
 
-
+  ![Variablen](images/03_gitbash_ubuntu-verz_erstellen.png)
 
 
 
