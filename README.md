@@ -37,11 +37,11 @@ Bevor wir loslegen checken wir, ob Vagrant, Virtualbox und SSH installiert ist.
 
 ...kann in der GitBash ausgeführt werden (siehe folgendes Bild). Es spielt in diesem Fall noch keine Rolle, in welchem Verzeichnis man sich befindet. 
 
-  ![Variablen](images/01_vagrant-vb-ssh.jpg)
+  ![Screenshot](images/01_vagrant-vb-ssh.jpg)
 
 Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls noch die PATH-Variable angepasst werden (siehe folgendes Bild). Dasselbe gilt auch für "vboxmanage" (Virtualbox)
 
-  ![Variablen](images/02_Systemvariable-f-vagrant.jpg)
+  ![Screenshot](images/02_Systemvariable-f-vagrant.jpg)
 
 
 Mit folgenden Schritten das Verzeichnis für die erste mit Vagrant erstellte Ubuntu-VM vorbereiten
@@ -51,8 +51,26 @@ Mit folgenden Schritten das Verzeichnis für die erste mit Vagrant erstellte Ubu
 > `$ mkdir ubuntu  ` _Projektverzeichnis "ubuntu" anlegen_ 
 > `$ cd ubuntu  ` _in's Verzeichnis wechseln_
 
+Screenshot (Gitbash auf Windows)
 
-  ![Variablen](images/03_gitbash_ubuntu-verz_erstellen.png)
+  ![Screenshot](images/03_gitbash_ubuntu-verz_erstellen.png)
+
+
+Mit folgendem Kommando wird im aktuellen Verzeichnis ein vagrantfile erstellt:
+
+```
+$ vagrant init hashicorp/precise32
+```
+Screenshot (Gitbash auf Windows)
+  ![Screenshot](images/11_gitbash_ubuntu-vagrantfile-erst.png)
+
+
+
+
+
+
+
+
 
 
 
