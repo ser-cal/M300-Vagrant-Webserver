@@ -38,7 +38,7 @@ Bevor wir loslegen zuerst checken, ob Vagrant, Virtualbox und SSH installiert is
   ![Screenshot](images/01_vagrant-vb-ssh.jpg) 
 
 
-### PATH-Variable anpassen / ergänzen (nur bei Bedarf)
+### PATH-Variable auf Host (Windows) anpassen + ergänzen (nur bei Bedarf)
 Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls noch die PATH-Variable angepasst werden (siehe folgendes Bild). Dasselbe gilt auch für "vboxmanage" (Virtualbox)
   ![Screenshot](images/02_Systemvariable-f-vagrant.jpg)
 
@@ -76,16 +76,36 @@ In VM "hüpfen" und überprüfen
 > `$ uname -a  ` _Checken, ob Distro stimmt --> Ubuntu_ <br>
 > `$ df -h ` _Diskfree Human-readable_ <br>
   ![Screenshot](images/14_gitbash_mit_ssh_auf_Ubuntu-VM.png)
-<br>
 
 VM vom Host aus überprüfen
 > `$ exit ` _aus der VM zurück auf den Host_<br>
 > `$ vboxmanage list runningvms  ` _checken, welche Virtualbox-VMs am Laufen sind_ <br>
   ![Screenshot](images/15_gitbash_Virtualbox_Ubuntu-VM.png)
+
+
+### Erste Änderungen im Vagrantfile vornehmen
+Standardmässig werden die Virtualbox-VMs „headless“ gestartet. Das heisst „ohne GUI" - nur mit der Kommandozeile. Man kann nun aber das Vagrantfile (Configfile) so anpassen, dass das GUI beim nächsten "` vagrant up `" gestartet
+> `$ less Vangrantfile ` _schauen, wo das GUI auskommentiert ist_<br>
+  ![Screenshot](images/16a_gitbash_Vagrantfile_anpassen.png)
+> `$ vi Vangrantfile ` _entsprechende Zeilen auskommentieren_<br>
+  ![Screenshot](images/16b_gitbash_Vagrantfile_anpassen.png)
 <br>
 
+Um die getätigten Änderungen im Vagrantfile zu aktivieren, muss dieses neu durchlaufen werden. Das kann mit einem der folgenden zwei Vorgehensweisen erfolgen 
+> `$ vagrant halt ` danach `$ vagrant up ` _Virtualbox-VM mit Vagrant stoppen und danach starten_<br>
+> `$ vagrant reload ` _Virtualbox-VM mit Vagrant quasi "rebooten"_<br>
+  ![Screenshot](images/17_gitbash_reboot_mit_fenster.png)
+<br>
 
+Wenn das Virtualbox-Fenster erscheint, hier noch ein "Hint", wie man aus dem "Maus und Tastatur gefangen"-Modus (nächstes Bild) kommt ...
 
+```
+1. "Pfeil nach unten"-Taste gleichzeitig mit 
+2. "Pfeil nach rechts"-Taste drücken
+3.	Erst wenn die ersten beiden Tasten gedrückt sind, die 
+	"Ctrl“-Taste drücken (alle drei Tasten zusammen)
+```
+  ![Screenshot](images/18_Maustaste_gefangen_loesen.png)
 
 
 # Viel Spass und viel Erfolg
