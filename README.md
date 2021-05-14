@@ -92,8 +92,8 @@ Standardmässig werden die Virtualbox-VMs „headless“ gestartet. Das heisst �
 <br>
 
 Um die getätigten Änderungen im Vagrantfile zu aktivieren, muss dieses neu durchlaufen werden. Das kann mit einem der folgenden zwei Vorgehensweisen erfolgen 
-> `$ vagrant halt ` danach `$ vagrant up ` _Virtualbox-VM mit Vagrant stoppen und danach starten_<br>
-> `$ vagrant reload ` _Virtualbox-VM mit Vagrant quasi "rebooten"_<br>
+> 1. `$ vagrant halt ` danach `$ vagrant up ` _Virtualbox-VM mit Vagrant stoppen und danach starten_<br>
+> 2. `$ vagrant reload ` _Virtualbox-VM mit Vagrant quasi "rebooten"_<br>
   ![Screenshot](images/17_gitbash_reboot_mit_fenster.png)
 <br>
 
@@ -102,7 +102,7 @@ Wenn das Virtualbox-Fenster erscheint, hier noch ein "Hint", wie man aus dem "Ma
 ```
 1. "Pfeil nach unten"-Taste gleichzeitig mit 
 2. "Pfeil nach rechts"-Taste drücken
-3.	Erst wenn die ersten beiden Tasten gedrückt sind, die 
+3.  Erst wenn die ersten beiden Tasten gedrückt sind, die 
 	"Ctrl“-Taste drücken (alle drei Tasten zusammen)
 ```
   ![Screenshot](images/18_Maustaste_gefangen_loesen.png)
