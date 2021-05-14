@@ -44,13 +44,17 @@ Falls das Kommando "vagrant" unter Windows nicht funktioniert, muss allenfalls n
   ![Variablen](images/02_Systemvariable-f-vagrant.jpg)
 
 
-....HIER weiterarbeiten
+Mit folgenden Schritten das Verzeichnis für die erste mit Vagrant erstellte Ubuntu-VM vorbereiten
+
+> `$ cd <Projekt-Mutterverzeichnis> ` _ins Mutterverzeichnis des vorgesehenen Projektes wechseln_<br>
+> `$ pwd  ` _kontrolle, ob im richtigen Verzeichnis_ <br>
+> `$ mkdir ubuntu  ` _Projektverzeichnis "ubuntu" anlegen_ 
+> `$ cd ubuntu  ` _in's Verzeichnis wechseln_
 
 
   ![Variablen](images/03_gitbash_ubuntu-verz_erstellen.png)
 
 
-sdfsdf
 
 
 
