@@ -57,28 +57,25 @@ Screenshot (Gitbash auf Windows)
 
 
 Mit folgendem Kommando wird im aktuellen Verzeichnis ein Vagrantfile erstellt:
-
-```
-$ vagrant init hashicorp/precise32
-```
-Screenshot (Gitbash auf Windows)
+> `$ vagrant init hashicorp/precise32 ` <br>
   ![Screenshot](images/11_gitbash_ubuntu-vagrantfile-erst.png)
 
-> `$ ls -ali ` _überprüfen ob Vagrantfile vorhanden ist_<br>
-
+Überprüfen ob das Vagrantfile vorhanden ist:
+> `$ ls -ali `
   ![Screenshot](images/11b_gitbash_ubuntu-vagrantfile-erst.png)
 
 Config-file öffnen mit Editor und checken
 > `$ vim Vagrantfile ` _Inhalt anschauen_<br>
-
   ![Screenshot](images/12_gitbash_ubuntu-vagrantfile-inhalt.png)
 <br>
 
 
 In VM "hüpfen" und überprüfen
 > `$ vagrant ssh ` _in die Ubuntu-VM "hüpfen"_<br>
-> `$ uname -a  ` _Checken, ob Ubuntu_ <br>
-> `$ df -h  ` _Diskfree Human-readable_ <br>
+> `$ uname -a  ` _Checken, ob Distro stimmt --> Ubuntu_ <br>
+> `$ df -h ` _Diskfree Human-readable_ <br>
+  ![Screenshot](images/14_gitbash_mit_ssh_auf_Ubuntu-VM.png)
+<br>
 
 VM zum ersten Mal starten 
 > `$ vagrant up ` _Virtualbox-VM mit Vagrant starten_<br>
