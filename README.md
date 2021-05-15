@@ -156,7 +156,7 @@ $ vagrant resume
   ![Screenshot](images/20b_VM_suspend_+_resume.png)
 <br>
 
-**VMs auflisten überprüfen** (Virtualbox-Befehl)
+**Sämtliche VBox-Eingabemöglichkeiten auflisten** (Virtualbox-Befehl)
 ```  
 $ VBox
 ```
@@ -229,7 +229,10 @@ Status wie folgt überprüfen und bei Bedarf anders setzen:
 Es ist aber auch möglich, den Status der Variable zu ändern, ohne Variable fix zu setzen; und zwar wie folgt:
 > `$ vagrant status --debug ` _nur 1x, nicht persistent_
 
+<br><br>
 
+# NGINX Webserver deklarativ aufsetzen
+In diesem Abschnitt werden wir nun einen NGINX-Webserver mit Vagrant deklarativ aufsetzen. Wir werden dazu ein Vagrantfile und ein Provision-Shellscript so aufsetzen, dass diese Umgebung jederzeit ortsunabhängig nachgebaut werden kann. Wir nutzen dazu Github als "Distributed Version Control System" und veröffentlichen den gesamten Code hier in diesem Repository. 
 
 
 
