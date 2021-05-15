@@ -121,13 +121,30 @@ Um dieses File im Gastsystem zu sehen, muss ich wie folgt vorgehen
   ![Screenshot](images/19b_txt-file.png)
 <br>
 
-### Weitere nützliche "vagrant"-Befehle 
+### Nützliche Befehle
 
-VM mit "suspend" anhalten/einfrieren. Free up Memory und CPU. (Z.B. falls ich knapp an Ressourcen bin, weil z.B. noch andere VMs laufen)
+**VM mit "halt" runterfahren** (abschalten)
+```  
+$ vagrant halt
+```
+**VM mit "up" starten**
+```  
+$ vagrant up
+```
+...gem. folgendem Screenshot
+
+> `$ cd <Projektverzeichnis> ` _ins richtige Directory wechseln_<br>
+> `$ vagrant halt ` _VM runterfahren_<br>
+> `$ vagrant up ` _VM starten_<br>
+  ![Screenshot](images/21_VM_runter_+_hochfahren.png)
+<br>
+
+
+**VM mit "suspend" anhalten/einfrieren.** <br>Free up Memory und CPU. (Z.B. falls ich knapp an Ressourcen bin, weil z.B. noch andere VMs laufen)
 ```  
 $ vagrant suspend
 ```
-VM mit "resume" wieder reaktivieren. Geht schneller, als wenn VM frisch gestartet wird
+**VM mit "resume" wieder reaktivieren.**<br>Geht schneller, als wenn VM frisch gestartet wird
 ```  
 $ vagrant resume
 ```
@@ -138,6 +155,88 @@ $ vagrant resume
 > `$ vagrant resume ` _VM reaktivieren_<br>
   ![Screenshot](images/20b_VM_suspend_+_resume.png)
 <br>
+
+**VMs auflisten überprüfen** (Virtualbox-Befehl)
+```  
+$ VBox
+```
+**Überprüfen, welche VMs gerade laufen** (Virtualbox-Befehl)
+```  
+$ VBoxManage.exe list vms
+```
+...gem. folgendem Screenshot
+> `$ VBox ` _Zeigt sämtliche VBox-Abfrageoptionen_<br>
+> `$ VBoxManage.exe list vms ` _Zeigt, welche VMs aktuell gestartet sind_<br>
+  ![Screenshot](images/22_VMs_auflisten.png)
+<br>
+
+**VM löschen** (zerstören)<br>Kann beliebig angewendet werden. Einer der grössten Vorteile von Vagrant. Genau diese VM kann später **mit nur einem Kommando** (vagrant up) wieder genau gleich hergestellt werden, wie vor dem Löschen (alle notwendigen Schritte dazu sind im Vagrantfile deklariert)
+```  
+$ vagrant destroy
+```
+**Überprüfen, welche VMs gerade laufen** (Virtualbox-Befehl)
+```  
+$ VBoxManage.exe list vms
+```
+...gem. folgendem Screenshot
+> `$ vagrant destroy` _VM komplett löschen_<br>
+> `$ VBoxManage.exe list vms ` _kontrollieren, ob nicht mehr vorhanden_<br>
+  ![Screenshot](images/23_VMs_zerstoeren_+_ueberpruefen.png)
+<br>
+
+**VM wieder neu erstellen**
+Probe auf's Exempel. Wir erstellen im Projektordner dieselbe VM neu mit folgendem Befehl.
+```  
+$ vagrant up
+```
+Kurze Zeit später... <br>
+dieselbe VM, die vorher zerstört wurde, ist innerhalb von wenigen Minuten wieder neu erstellt. Unten ein Screenshot der Windows-Verzeichnisse. Das Ganze kann auch noch wie folgt in der VM überprüft werden:
+> `$ vagrant ssh` _in die VM "hüpfen"_<br>
+> `$ cd /vagrant ` _das file "hello.txt" sollte wieder ersichtlich sein_<br>
+  ![Screenshot](images/25_wo_sind_die_vagrant-files.png)
+
+
+**Vagrant Hilfe** (Help)<br>
+Hilfe zu sämtlichen Vagrant-Kommandos kann wie folgt bezogen werden
+
+```  
+$ vagrant -h
+$ vagrant --help
+```
+...gem. folgendem Screenshot
+  ![Screenshot](images/31_vagrant_help.png)
+<br>
+
+...oder eine Stufe tiefer zu bestimmten Parametern (z.B. zu "vagrant up")
+```  
+$ vagrant up -h
+```
+...gem. folgendem Screenshot
+  ![Screenshot](images/32_vagrant-up_help.png)
+<br>
+
+Beim Kommando `$ vagrant status` kann zusätzlich noch der Log-Level definiert werden (untersch. Outputs). Das ist nützlich, wenn Probleme auftreten und diese mit den aktuellen Settings nicht erkennbar sind.<br> Wir unterscheiden zwischen folgenden Status:
+ - debug
+ - info (normal)
+ - warn
+ - error
+
+Status wie folgt überprüfen und bei Bedarf anders setzen:
+> `$ vagrant status`  _Defaultwert ist "Info"_<br>
+> `$ export VAGRANT_LOG=debug ` _ändern, um mehr Infos zu erhalten_<br>
+  ![Screenshot](images/33_vagrant_status_debug.png)
+
+Es ist aber auch möglich, den Status der Variable zu ändern, ohne Variable fix zu setzen; und zwar wie folgt:
+> `$ vagrant status --debug ` _nur 1x, nicht persistent_
+
+
+
+
+
+
+
+
+
 
 - - -
 
