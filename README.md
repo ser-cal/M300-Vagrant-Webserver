@@ -108,6 +108,39 @@ Wenn das Virtualbox-Fenster erscheint, hier noch ein "Hint", wie man aus dem "Ma
   ![Screenshot](images/18_Maustaste_gefangen_loesen.png)
 
 
+### Files zwischen Host und VM sharen
+„Synced Folders“ Verzeichnisse und Files können zwischen dem Host-System und den VM’s (Guests) ge’shared‘ werden.
+
+Hier ein Beispiel: Einen beliebigen Editor auf dem Host starten, Text eingeben und im Projektverzeichnis speichern (dort wo auch das Vagrantfile abgelegt ist)
+  ![Screenshot](images/19a_txt-file.png)
+
+Um dieses File im Gastsystem zu sehen, muss ich wie folgt vorgehen 
+> `$ vagrant ssh ` _auf die Ubuntu-VM "hüpfen"_<br>
+> `$ cd /vagrant ` _dieses Verzeichnis ist mit dem Gastsystem ge'sync'ed_<br>
+> `$ ls -al ` _hier ist das vorher erstellte **hello.txt** ersichtlich_<br>
+  ![Screenshot](images/19b_txt-file.png)
+<br>
+
+### Weitere nützliche "vagrant"-Befehle 
+
+VM mit "suspend" anhalten/einfrieren. Free up Memory und CPU. (Z.B. falls ich knapp an Ressourcen bin, weil z.B. noch andere VMs laufen)
+```  
+$ vagrant suspend
+```
+VM mit "resume" wieder reaktivieren. Geht schneller, als wenn VM frisch gestartet wird
+```  
+$ vagrant resume
+```
+...gem. folgendem Screenshot
+
+> `$ cd <Projektverzeichnis> ` _ins richtige Directory wechseln_<br>
+> `$ vagrant suspend ` _VM anhalten / einfrieren_<br>
+> `$ vagrant resume ` _VM reaktivieren_<br>
+  ![Screenshot](images/20b_VM_suspend_+_resume.png)
+<br>
+
+- - -
+
 # Viel Spass und viel Erfolg
 - - -
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/ch/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/ch/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/ch/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 3.0 Schweiz Lizenz</a>
