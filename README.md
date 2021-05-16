@@ -454,7 +454,8 @@ config.vm.synced_folder "sites-enabled", "/vagrant/sites-enabled"
 Auf dem Output oben sieht man nochmals gut, dass das Provisioning erst anschliessend durchgeführt wird. Diese gemounteten „Synced-Folders“ können also auch für das Provisioning, das erst später folgt, genutzt werden. 
 
 ### Testing
-Nun geht es darum, nochmals alles zu überprüfen. Es macht demzufolge Sinn, dass die gesamte VM zerstört - und anschliessend neu installiert wird. 
+Nun geht es darum, nochmals alles zu überprüfen. Es macht demzufolge Sinn, dass die gesamte VM zerstört - und anschliessend neu installiert wird. Dazu benötigen wir lediglich zwei Kommandos und max. ein 5 Minuten Zeit.
+
 Vorher ändern wir aber in der `index.html` die Hintergrundfarbe auf **Orange**. Dann sehen wir auch gleich, ob die Änderungen im "Synched Folder" auch gleich greifen. 
 
 `$ vim /vagrant/www/index.html ` _Hintergrundfarbe im index.html ändern_<br>
@@ -470,7 +471,10 @@ Nachdem die VM wieder hochgekommen ist, auf einem Browser `localhost:8080` einge
 
  ![Screenshot](images/74g_nginxs_vagrant.png)
 
-Wenn die Seite wie oben mit einem orangen Hintergrund erscheint, hat **alles** funktioniert. Wir haben erfolgreich mit einem deklarativen Script einen Webserver aufgesetzt und können den Code/Content weiterentwickeln, persistent und unabhängig von der VM abspeichern und die VM jerzeit verlustfrei zerstören und zu einem späteren Zeitpunkt ohne Aufwand wieder neu erstellen.  
+Wenn die Seite wie oben mit einem orangen Hintergrund erscheint, hat **alles** funktioniert. 
+
+## Review
+Wir haben erfolgreich mit einem **deklarativen Script**  einen Webserver aufgesetzt und können den Code/Content beliebig weiterentwickeln, persistent und unabhängig von der VM abspeichern und diese jerzeit verlustfrei zerstören und zu einem späteren Zeitpunkt **ohne Aufwand** wieder neu erstellen.  
 
 # Herzlichen Glückwunsch
 
