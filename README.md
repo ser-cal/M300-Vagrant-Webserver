@@ -71,7 +71,7 @@ Wenn soweit alles ok ist, können wir die VM wie folgt zum ersten Mal starten
   ![Screenshot](images/13_gitbash_ubuntu-vm-mit-Vagrant_inst.png)
 <br>
 
-In VM "hüpfen" und überprüfen
+In die VM "hüpfen" und überprüfen
 > `$ vagrant ssh ` _in die Ubuntu-VM "hüpfen"_<br>
 > `$ uname -a  ` _Checken, ob Distro stimmt --> Ubuntu_ <br>
 > `$ df -h ` _Diskfree Human-readable_ <br>
@@ -84,7 +84,7 @@ VM vom Host aus überprüfen
 
 
 ### Erste Änderungen im Vagrantfile vornehmen
-Standardmässig werden die Virtualbox-VMs „headless“ gestartet. Das heisst „ohne GUI" - nur mit der Kommandozeile. Man kann nun aber das Vagrantfile (Configfile) so anpassen, dass das GUI beim nächsten "` vagrant up `" gestartet
+Standardmässig werden die Virtualbox-VMs „headless“ gestartet. Das heisst „ohne GUI" - nur mit der Kommandozeile. Man kann nun aber das Vagrantfile (Config-file) so anpassen, dass das GUI beim nächsten "` vagrant up `" gestartet wird
 > `$ less Vangrantfile ` _schauen, wo das GUI auskommentiert ist_<br>
   ![Screenshot](images/16a_gitbash_Vagrantfile_anpassen.png)
 > `$ vi Vangrantfile ` _entsprechende Zeilen auskommentieren_<br>
@@ -119,7 +119,6 @@ Um dieses File im Gastsystem zu sehen, muss ich wie folgt vorgehen
 > `$ cd /vagrant ` _dieses Verzeichnis ist mit dem Gastsystem ge'sync'ed_<br>
 > `$ ls -al ` _hier ist das vorher erstellte **hello.txt** ersichtlich_<br>
   ![Screenshot](images/19b_txt-file.png)
-<br>
 
 ### Nützliche Befehle
 
@@ -235,7 +234,7 @@ Es ist aber auch möglich, den Status der Variable zu ändern, ohne Variable fix
 In diesem Abschnitt werden wir nun einen NGINX-Webserver mit Vagrant deklarativ aufbauen. Dazu benötigen wir das bereits bekannte Vagrantfile und zusätzlich ein Provision-Shellscript. Dieses Shellscript wird benötigt, um auf der bereitgestellten VM weitere Installationen und Konfigurationen durchzuführen. Damit diese Umgebung jederzeit und ortsunabhängig nachgebaut werden kann, nutzen wir Github als "Distributed Version Control System". Wir veröffentlichen den gesamten Code hier in diesem Repository. 
 
 **Vorbereitung**<br>
-Zuerst erstellen wir für den NGINX-Webserver ein neues Verzechnis
+Zuerst erstellen wir für den NGINX-Webserver ein neues Verzeichnis
 
 > `$ cd <Projektverzeichnis> ` _ins richtige Directory wechseln_<br>
 > `$ mkdir nginx ` _Verzeichnis erstellen_<br>
@@ -244,7 +243,7 @@ Zuerst erstellen wir für den NGINX-Webserver ein neues Verzechnis
 <br>
 
 **Projekt initialisieren / OS (Vagrant Box) ergänzen**<br>
-In diesem Fall initialisieren wir das Vagrant-Projekt mit dem Minimal-Flag, um die vielen auskommentierten Zeilen im Vagrantfile rauszulöschen und später eigene Inhalte einzufügen. Zusätzlich muss noch ein OS (in Vagrant "Box" genannt) angegeben werden. Wir entscheiden uns für die bereits früher verwendete Ubuntu-Box. Da wir diese bereits früher eingesetzt und ge'downloaded' haben, ist sie bereits lokal vorhanden. Andernfalls muss sie im Vagrant-Repository geholt werden (dauert dann etwas länger)
+In diesem Fall initialisieren wir das Vagrant-Projekt mit dem Minimal-Flag, um die vielen auskommentierten Zeilen im Vagrantfile rauszulöschen und später eigene Inhalte einzufügen. Zusätzlich muss noch ein OS (in Vagrant "Box" genannt) angegeben werden. Wir entscheiden uns für die bereits früher verwendete Ubuntu-Box. Da wir diese ge'downloaded' haben, ist sie bereits lokal vorhanden. Andernfalls muss sie im Vagrant-Repository geholt werden (dauert dann etwas länger)
 > `$ vagrant init hashicorp/precise32 --minimal ` _Initialisieren mit der Ubuntu-Box_<br>
   ![Screenshot](images/39_nginx_vagrantfile_small.png)
 <br>
@@ -272,7 +271,7 @@ Die folgenden Screenshots zeigen, welcher Eintrag dazu im Vagrantfile ergänzt w
 
    ![Screenshot](images/51_nginx_provison_sh.png)
 
-**Provision-Script ergänzen und im Projektverzeichnis ablegen**<br>
+**Provision-Script ergänzen**<br>
 Jetzt muss das **`provision.sh`** noch mit Inhalt gefüllt werden. Wir wollen folgende drei Punkte darin festhalten:
 
 ```
@@ -339,16 +338,17 @@ _...erneut_ `localhost:8080` _in beliebigen Browser eingeben... und - **es funkt
 
 ### NGINX Configuration-File anpassen, um persistente Nutzung zu ermöglichen
 
-**Das funktioniert bis jetzt**<br>
-Jetzt ist soweit alles so vorbereitet, dass der NGINX Web-Dienst jederzeit und ortsunabhängig aufgesetzt werden kann. Der aktuelle Stand ermöglicht es uns, die Umgebung sehr schnell hochzufahren und danach mit einem Webbrowser über `localhost:8080` auf den Webserver zuzugreifen. Mehr allerdings (noch) nicht. <br>
-**Das funktioniert bis jetzt NOCH NICHT**<br>
-Falls wir z.B. Änderungen innerhalb der VM (z.B. im Web-content) durchführen, wären diese **nach** einem `$ vagrant destroy` / `$ vagrant up` für immer und ewig **gelöscht**. Wir müssen in einem nächsten Schritt also sicherstellen, dass unsere Testumgebung Änderungen festhalten (persistieren) kann - sonst ist das Setup einer solchen Entwicklungsumgebung eigentlich zwecklos.  
+**Was funktioniert bis jetzt**<br>
+Es ist soweit alles so vorbereitet, dass der NGINX Web-Dienst jederzeit und ortsunabhängig aufgesetzt werden kann. Der aktuelle Stand ermöglicht es uns, die Umgebung sehr schnell hochzufahren und danach mit einem Webbrowser über `localhost:8080` auf den Webserver zuzugreifen.
+
+**Was funktioniert bis jetzt NOCH NICHT**<br>
+Falls wir Änderungen innerhalb der VM (z.B. im Web-content) durchführen, wären diese **nach** einem `$ vagrant destroy` / `$ vagrant up` für immer und ewig **gelöscht**. Wir müssen in einem nächsten Schritt also sicherstellen, dass unsere Testumgebung Änderungen festhalten (persistieren) kann - sonst ist das Setup einer solchen Entwicklungsumgebung eigentlich zwecklos.  
 
  Folgende Schritte sind notwendig, um dieses Problem zu lösen:
 
 **1. Configuration-File für den NGINX-Webdienst analysieren**<br>
 Wenn in einer Linux-Umgebung ein Dienst startet, wird als erstes das zugehörige Config-file durchgearbeitet. Dieses befindet sich standardmässig im Verzeichnis **/etc**.
- Das Config-file des NGINX-Webdienstes befindet sich auf Ubuntu im Verzeichnis **/etc/nginx/sites-enabled** und lautet **default**. In der folgenden Sequenz "hüpfen" wir in die VM und schauen uns die Standard-Configuration dieses Files mal an. Dieses File müssen wir später in einem lokalen Verzeichnis ablegen und so abändern, dass der Pfad zum Web-Content nicht mehr auf ein Unterverzeichnis der VM "pointet", sondern auf ein "shared" Verzeichnis, welches lokal abgelegt ist und bei einem `$ vagrant destroy` nicht gelöscht wird.
+ Das Config-file des NGINX-Webdienstes befindet sich auf Ubuntu im Verzeichnis **/etc/nginx/sites-enabled** und lautet **default**. In der folgenden Sequenz "hüpfen" wir in die VM und schauen uns die Standard-Configuration dieses Files mal an. Wir müssen es später in einem lokalen Verzeichnis ablegen und so abändern, dass der Pfad zum Web-Content nicht mehr auf ein Unterverzeichnis der VM "pointet", sondern auf ein "shared" Verzeichnis, welches lokal abgelegt ist und bei einem `$ vagrant destroy` nicht gelöscht wird.
 
 Umsetzung:
 > `$ vagrant ssh ` _in die VM "hüpfen"_<br>
@@ -365,7 +365,7 @@ Mit folgenden Kommandos können wir kurz überprüfen, ob das index.html auch wi
 > `$ ls /usr/share/nginx/www ` _Files im Verzeichnis abrufen_<br>
 > `$ cat /usr/share/nginx/www/index.html ` _html-Code des index.html-Files ausgeben_<br>
   ![Screenshot](images/65_nginx_webserver-konfig.png)
-
+<br>
 
 **2. Configuration-File "persistent" machen und darin Pfad für den NGINX-Webdienst anpassen**<br>
 Damit unser Web-Content persistent und unabhängig von der VM entwickelt werden kann, müssen wir das NGINX-Configfile `/etc/nginx/sites-enabled/default` in ein Unterverzeichnis des **Shared-Folders** kopieren. Dieses Unterverzeichnis nennen wir zwecks Nachvollziehbarkeit genau wie das Original `sites-enabled`. <br> 
@@ -380,8 +380,16 @@ Mit folgenden Kommandos können wir kurz überprüfen, ob das index.html auch wi
   ![Screenshot](images/75_nginx_vagrant_configfiles_anpassen.png)
 
 
+Nun muss im **default**-File noch der Root-Path von `/usr/share/nginx/www` auf **`/vagrant/www`** angepasst werden. So, dass nach einer Neuinstallation der Pfad auf das Unterverzeichnis **www** im **Shared-Folder** verweist und somit auf den aktuellen Content zugreift
+ ![Screenshot](images/75g_nginx_vagrant_configfiles_anpassen.png)
+
+```
+  ALT:  /usr/share/nginx/www   (Zeile 24)
+  NEU:  /vagrant/www           (Zeile 25)
+```
+
 **3. NGINX Web-Content "persistent" machen**<br>
-Wie bereits unter Punkt 2. kurz angesprochen, muss der gesamte Web-Content ebenfalls auf dem **Shared-Folder** abgelegt werden, damit er persistent bleibt. Damit das funktioniert, muss das Verzeichnis `/usr/share/nginx/www` plus alle darin abgelegten Files auf den **Shared-Folder** kopiert werden. Anschliessend muss im Config-File **default** noch der absolute Pfad entsprechend auf dieses Verzeichnis angepasst werden.
+Wie bereits unter Punkt 2. kurz angesprochen, muss der gesamte Web-Content ebenfalls auf dem **Shared-Folder** abgelegt werden, damit er persistent bleibt. Damit das funktioniert, muss das Verzeichnis `/usr/share/nginx/www` plus alle darin abgelegten Files ebenfalls auf den **Shared-Folder** kopiert werden. Der Absolute Pfad des Config-File **default** wurde bereits weiter oben so angepasst, dass Web-Anfragen auf dieses Verzeichnis zugreifen. 
 
 Mit folgenden Kommandos können wir den **www**-Ordner und seinen Content auf den **Shared-Folder** kopieren
 > `$ ls -ali /vagrant ` _Aktueller Inhalt des Shared-Folders_<br>
