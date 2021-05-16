@@ -4,7 +4,7 @@
 
 # M300 Webserver mit Vagrant aufsetzen und einrichten
 
-Ziel dieses Projektes (Tutorials) ist es, dass die Lernenden **Vagrant** verstehen und praktisch anwenden können. Bei dieser Arbeit handelt es sich um ein klassisches "Hands-on"-Projekt. Ziel ist es, Schritt für Schritt ein deklaratives Setup für eine Webserver-Testumgebung aufzubauen, die zum Entwickeln genutzt werden kann und in kürzester Zeit ortsunabhängig und mit wenig Aufwand nachgebaut werden kann. Sämtliche Daten sind persistent, bleiben also auch beim Zerstören der VM bestehen und können jederzeit im Sinne von CI/CD "idempotent" wieder automatisch auf einer neuen/anderen Umgebung verwendet werden.<br>
+Ziel dieses Projektes (Tutorials) ist es, dass die Lernenden **Vagrant** verstehen und praktisch anwenden können. Bei dieser Arbeit handelt es sich um ein klassisches "Hands-on"-Projekt. Ziel ist es, Schritt für Schritt ein deklaratives Setup für eine Webserver-Testumgebung aufzubauen, die zum Entwickeln genutzt - und in kürzester Zeit ortsunabhängig und mit wenig Aufwand - nachgebaut werden kann. Sämtliche Daten sind persistent, bleiben also auch beim Zerstören der VM bestehen und können jederzeit im Sinne von CI/CD "idempotent" wieder automatisch auf einer neuen/anderen Umgebung verwendet werden.<br>
 
 ## Voraussetzungen:
 - [Vagrant](https://www.vagrantup.com/) installiert
