@@ -23,6 +23,11 @@ Vagrant ist sehr gut geeignet, um schnell und unkompliziert Testumgebungen aufzu
 
 2. Im **zweiten Abschnitt** **[NGINX-Webserver deklarativ aufsetzen](#nginx-webserver-deklarativ-aufsetzen)** geht bereits ein erstes Mal zur Sache. Wir setzen Schritt für Schritt einen NGINX-Webserver auf - und zwar so, dass diese Umgebung jederzeit gelöscht und in kürzester Zeit wieder erstellt werden kann. Auch auf einer anderen Umgebung. Der Webseitencontent wird somit persistiert und es kann auch nach einem "Destroy" und einer Neuinstallation wieder auf den früher erstellten Content zugegriffen werden. 
 
+      **Wichtig:** <br>
+      In diesem Tutorial sollen die deklarativen Scripts selber (von Hand, mit Editor) erstellt werden.
+      Wer alles durcharbeitet, sollte zum Ziel kommen.<br>
+      Das Repository beinhaltet am Ende folgende Files und Ordner:
+        ![Screenshot](images/00_Repository_Webserverprojekt.png) 
 
 ---
 
