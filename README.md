@@ -419,13 +419,62 @@ Es folgen nun noch die Anpassung des files **provision.sh**, um diese Änderunge
   ![Screenshot](images/75k_nginx_vagrant_configfiles_anpassen.png)
 
 
+**4. Synced Folders konfigurieren**<br>
+Wie bereits mehrmals erwähnt, gibt es ein „shared“ Verzeichnis. Dieses heisst per Default **/vagrant** und wird z.B. beim Starten der VM eingebunden (siehe zweites Bild, oranger Rahmen):
+
+![Screenshot](images/76a_synced_oder_shared_folders.png)
+![Screenshot](images/76b_synced_oder_shared_folders.png)
+
+Der Alias „Synced Folder“ kann umkonfiguriert werden. Im Moment wird in diesem Fall das gesamte Verzeichnis von `C:/00-Lab/Git/nginx` synchronisiert. Wir benötigen aber aktuell lediglich **zwei** Unterverzeichnisse davon für unsere NGINX-Umgebung – nämlich `sites-enabled` und `www`. In der folgenden Sequenz werden wir das „Vagrantfile“ so anpassen, dass nur noch diese beiden Unterverzeichnisse ge’shared‘ sind.
+
+**Reminder!** <br>
+Wenn das „Vagrantfile“ verändert wird, muss die VM **nicht** zerstört werden! Anders ist das, wenn das File `provision.sh` modifiziert wird. Dann muss entweder die VM „destroyed“ und neu geladen-, oder gleich anschliessend das Kommando „vagrant provision“ ausgeführt werden.
+
+Nach Änderungen im „Vagrantfile“ werden diese also gleich nach `vagrant up` eingelesen und aktiviert.
+
+Mit folgenden Eingaben im Vagrantfile "disablen" wir zuerst `/vagrant` und enablen anschliessend die beiden Unterverzeichnisse `www` und `sites-enabled`
+
+```
+config.vm.synced_folder "./", "vagrant", disabled: true
+config.vm.synced_folder "www", "/vagrant/www"
+config.vm.synced_folder "sites-enabled", "/vagrant/sites-enabled"
+
+  ...danach "speichern" nicht vergessen
+```
+  ![Screenshot](images/76c_synced_oder_shared_folders.png)
+  _...etwas grösser:_
+  ![Screenshot](images/76d_synced_oder_shared_folders.png)
+
+> `$ vagrant reload ` _VM rebooten_<br>
+ ![Screenshot](images/76e_synced_oder_shared_folders.png)
+  _...Shared Untererzeichnisse werden neu gemountet_
+  ![Screenshot](images/76f_synced_oder_shared_folders.png)
 
 
-- - -
+Auf dem Output oben sieht man nochmals gut, dass das Provisioning erst anschliessend durchgeführt wird. Diese gemounteten „Synced-Folders“ können also auch für das Provisioning, das erst später folgt, genutzt werden. 
+
+### Testing
+Nun geht es darum, nochmals alles zu überprüfen. Es macht demzufolge Sinn, dass die gesamte VM zerstört - und anschliessend neu installiert wird. 
+Vorher ändern wir aber in der `index.html` die Hintergrundfarbe auf **Orange**. Dann sehen wir auch gleich, ob die Änderungen im "Synched Folder" auch gleich greifen. 
+
+`$ vim /vagrant/www/index.html ` _Hintergrundfarbe im index.html ändern_<br>
+```
+<body bgcolor="orange" text="black">
+```
+
+> `$ vagrant destroy -f ` _VM zerstören_<br>
+> `$ vagrant up ` _VM neu installieren_<br>
+ ![Screenshot](images/75d_nginx_vagrant_configfiles_anpassen.png)
+
+Nachdem die VM wieder hochgekommen ist, auf einem Browser `localhost:8080` eingeben
+
+ ![Screenshot](images/74g_nginxs_vagrant.png)
+
+Wenn die Seite wie oben erscheint, hat alles funktioniert. Wir haben erfolgreich mit einem deklarativen Script einen Webserver aufgesetzt und können den Code/Content entwickeln und unabhängig von der VM abspeichern.  
+
+# Herzlichen Glückwunsch
 
 
-# Viel Spass und viel Erfolg
-- - -
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/ch/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/ch/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/ch/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 3.0 Schweiz Lizenz</a>
 
 - - -
