@@ -53,7 +53,7 @@ Mit folgenden Schritten das Verzeichnis für die erste mit Vagrant erstellte Ubu
 
 
 Im aktuellen Verzeichnis ein Vagrantfile (für das OS Ubuntu Precise32) erstellen:
-> `$ vagrant init hashicorp/precise32 ` <br>
+> `$ vagrant init hashicorp/precise32 `
   ![Screenshot](images/11_gitbash_ubuntu-vagrantfile-erst.png)
 
 Überprüfen ob das Vagrantfile vorhanden ist:
@@ -229,10 +229,94 @@ Status wie folgt überprüfen und bei Bedarf anders setzen:
 Es ist aber auch möglich, den Status der Variable zu ändern, ohne Variable fix zu setzen; und zwar wie folgt:
 > `$ vagrant status --debug ` _nur 1x, nicht persistent_
 
-<br><br>
+- - - 
 
 # NGINX Webserver deklarativ aufsetzen
-In diesem Abschnitt werden wir nun einen NGINX-Webserver mit Vagrant deklarativ aufsetzen. Wir werden dazu ein Vagrantfile und ein Provision-Shellscript so aufsetzen, dass diese Umgebung jederzeit ortsunabhängig nachgebaut werden kann. Wir nutzen dazu Github als "Distributed Version Control System" und veröffentlichen den gesamten Code hier in diesem Repository. 
+In diesem Abschnitt werden wir nun einen NGINX-Webserver mit Vagrant deklarativ aufbauen. Dazu benötigen wir das bereits bekannte Vagrantfile und zusätzlich ein Provision-Shellscript. Dieses Shellscript wird benötigt, um auf der bereitgestellten VM weitere Installationen und Konfigurationen durchzuführen. Damit diese Umgebung jederzeit und ortsunabhängig nachgebaut werden kann, nutzen wir Github als "Distributed Version Control System". Wir veröffentlichen den gesamten Code hier in diesem Repository. 
+
+Zuerst erstellen wir für den NGINX-Webserver ein neues Verzechnis
+
+> `$ cd <Projektverzeichnis> ` _ins richtige Directory wechseln_<br>
+> `$ mkdir nginx ` _Verzeichnis erstellen_<br>
+> `$ cd nginx ` _Ins Verzeichnis wechseln_<br>
+  ![Screenshot](images/35_nginx_Umgebung.png)
+<br>
+
+Danach initialisieren wir das Vagrant-Projekt mit dem Minimal-Flag, um die vielen auskommentierten Zeilen im Vagrantfile rauszulöschen und eigene Inhalte zu kreieren. Wir entscheiden uns für die bereits früher verwendete Ubuntu-Box.
+> `$ vagrant init hashicorp/precise32 --minimal ` _Initialisieren mit der Ubuntu-Box_<br>
+  ![Screenshot](images/39_nginx_vagrantfile_small.png)
+<br>
+
+Danach öffnen wir das Vagrantfile mit einem beliebigen Editor (in diesem Fall Sublime Text) und nennen die VM "web-dev". Dieser Name erscheint später als Prompt, wenn wir in die VM "hüpfen" (siehe übernächstes Bild)
+  ![Screenshot](images/40_nginx_vagrantfile_small.png)
+<br>
+
+VM zum ersten Mal starten
+> `$ vagrant up ` _VM starten_<br>
+  ![Screenshot](images/41_nginx_vagrant_up.png)
+<br>
+
+In die VM "hüpfen" und überprüfen, ob der im Vagrantfile definierte Systemname angezeigt wird
+> `$ vagrant ssh ` _in die VM "hüpfen"_<br>
+  ![Screenshot](images/42_nginx_vagrant_ssh.png)
+<br>
+
+Jetzt haben wir zwar ein funktionsfähiges Ubuntu am laufen, aber noch keine zusätzliche Software darin. Damit wir diese anschliessend deklarativ installieren können, müssen wir ein separates Provision-Skript erstellen. Damit dieses anschliessend ausgeführt wird, muss dies explizit im Vagrantfile definiert werden. In unserem Fall erstellen wir dafür das **`provision.sh`**
+
+Die folgenden Screenshots zeigen, wie dies im Vagrantfile ergänzt werden soll und wo das **`provision.sh`** abgelegt werden soll
+  ![Screenshot](images/50_nginx_vagrantfile_provison_sh.png)
+
+   ![Screenshot](images/51_nginx_provison_sh.png)
+
+Jetzt muss das **`provision.sh`** noch mit Inhalt gefüllt werden. Wir wollen folgende drei Punkte darin festhalten:
+
+```
+1. Sämtliche Package-Libraries updaten 
+2. NGINX-Packet installieren
+3. NGINX starten
+```
+
+...die entsprechenden Einträge sehen wie folgt aus:
+   ![Screenshot](images/51b_nginx_provison_sh.png)
+
+Wir haben nun das Vagrantfile ergänzt und ein zusätzliches Provisioning-Script erstellt. Um beide Änderungen wirksam zu machen, müssen wir verstehen, wie Vagrant in einem solchen Fall funktioniert.
+
+Versuchen wir mal, die VM zu rebooten:
+> `$ vagrant reload ` _VM rebooten_<br>
+  ![Screenshot](images/52_nginx_vagrant_reload.png)
+
+
+
+Wir sehen, dass das geänderte Vagrantfile eingelesen wurde. Der Eintrag am Ende zeigt allerdings, dass das **`provision.sh`**-Script nicht ausgeführt werden kann.<br>
+**Wichtiger Hinweis:** Vagrant provisioniert standardmässig nur beim ersten "`vagrant init`". Das ist in unserem Fall bereits geschehen. Die Meldung ganz am Ende hilft uns dabei und zeigt auch gleich auf, was zu tun ist. Wir müssen noch das Flag `--provision` setzen, damit auch das Provision-Script angekickt wird. 
+
+Mit folgendem Kommando wird das Povision-Script nach dem Booten der VM angekickt. Unten sieht man auch, dass die Installation von NGINX gestartet wurde.
+> `$ vagrant provision ` _VM neu provisionieren_<br>
+  ![Screenshot](images/53_nginx_vagrant_provision_1.png)
+  ![Screenshot](images/53_nginx_vagrant_provision_2.png)
+
+Überprüfen, ob NGINX installiert wurde.
+> `$ vagrant ssh ` _in die VM "hüpfen"_<br>
+> `$ service nginx status ` _checken, ob NGINX läuft_
+  ![Screenshot](images/54_nginx_vagrant_ssh_nginx_status.png)
+
+Kontrollieren, ob die `index.html`-Seite angezeigt wird:
+> `$ wget -q0- localhost ` _HTML-Code im Klartext ausgeben_<br>
+  ![Screenshot](images/55_nginx_webseiten-text.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
