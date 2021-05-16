@@ -369,7 +369,7 @@ Mit folgenden Kommandos können wir kurz überprüfen, ob das index.html auch wi
 
 **2. Configuration-File "persistent" machen und darin Pfad für den NGINX-Webdienst anpassen**<br>
 Damit unser Web-Content persistent und unabhängig von der VM entwickelt werden kann, müssen wir das NGINX-Configfile `/etc/nginx/sites-enabled/default` in ein Unterverzeichnis des **Shared-Folders** kopieren. Dieses Unterverzeichnis nennen wir zwecks Nachvollziehbarkeit genau wie das Original `sites-enabled`. <br> 
-**Zur Erinnerung:** Der **Shared-Folder** (dort wo auch das Vagrantfile liegt), ist auf der VM unter `/vagrant` eingehängt. Der absolute Pfad des neuen, persistenten Files, muss also neu `/vagrant/sites-enabled/default` lauten. Anschliessend müssen wir den Inhalt dieses Files ebenfalls noch anpassen. Und zwar so, dass danach der Link zum NGINX-Content ebenfalls nicht mehr in die VM verweist, sondern auf ein weiteres, neu zu erstellendes, Web-Content-Unterverzeichnis `www` im **Shared-Folder** verweist. 
+**Zur Erinnerung:** Der **Shared-Folder** (dort wo auch das Vagrantfile liegt), ist auf der VM unter `/vagrant` eingehängt. Der absolute Pfad des neuen, persistenten Files, muss also neu `/vagrant/sites-enabled/default` lauten. Anschliessend müssen wir den Inhalt dieses Files ebenfalls noch anpassen. Und zwar so, dass danach der Link zum NGINX-Content nicht mehr in die VM verweist, sondern auf ein weiteres, neu zu erstellendes, Web-Content-Unterverzeichnis `www` im **Shared-Folder**. 
 
 Mit folgenden Kommandos können wir kurz überprüfen, ob das index.html auch wirklich in diesem Verzeichnis liegt
 > `$ vagrant ssh ` _in die VM hüpfen_<br>
@@ -380,16 +380,20 @@ Mit folgenden Kommandos können wir kurz überprüfen, ob das index.html auch wi
   ![Screenshot](images/75_nginx_vagrant_configfiles_anpassen.png)
 
 
-Nun muss im **default**-File noch der Root-Path von `/usr/share/nginx/www` auf **`/vagrant/www`** angepasst werden. So, dass nach einer Neuinstallation der Pfad auf das Unterverzeichnis **www** im **Shared-Folder** verweist und somit auf den aktuellen Content zugreift
+Nun muss im `/vagrant/sites-enabled/default`-File noch der Root-Path von `/usr/share/nginx/www` auf **`/vagrant/www`** umgeschrieben und **abgespeichert** werden. So, dass der Pfad auch nach einer Neuinstallation auf das Unterverzeichnis **www** im **Shared-Folder** verweist und so garantiert auf den aktuellen, persistenten Content zugreift
  ![Screenshot](images/75g_nginx_vagrant_configfiles_anpassen.png)
 
 ```
+  Änderung im /vagrant/sites-enabled/default
+
   ALT:  /usr/share/nginx/www   (Zeile 24)
   NEU:  /vagrant/www           (Zeile 25)
+  
+  ...danach "speichern" nicht vergessen
 ```
 
 **3. NGINX Web-Content "persistent" machen**<br>
-Wie bereits unter Punkt 2. kurz angesprochen, muss der gesamte Web-Content ebenfalls auf dem **Shared-Folder** abgelegt werden, damit er persistent bleibt. Damit das funktioniert, muss das Verzeichnis `/usr/share/nginx/www` plus alle darin abgelegten Files ebenfalls auf den **Shared-Folder** kopiert werden. Der Absolute Pfad des Config-File **default** wurde bereits weiter oben so angepasst, dass Web-Anfragen auf dieses Verzeichnis zugreifen. 
+Wie bereits unter Punkt 2. kurz angesprochen, muss der gesamte Web-Content ebenfalls auf dem **Shared-Folder** abgelegt werden, damit er persistent bleibt. Damit das funktioniert, muss das Verzeichnis `/usr/share/nginx/www` plus alle darin abgelegten Files ebenfalls auf den **Shared-Folder** kopiert werden. Der Absolute Pfad des Config-File `/vagrant/sites-enabled/default` wurde bereits weiter oben so angepasst, dass Web-Anfragen auf dieses Verzeichnis zugreifen. 
 
 Mit folgenden Kommandos können wir den **www**-Ordner und seinen Content auf den **Shared-Folder** kopieren
 > `$ ls -ali /vagrant ` _Aktueller Inhalt des Shared-Folders_<br>
