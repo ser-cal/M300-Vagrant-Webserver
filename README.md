@@ -470,7 +470,7 @@ Nachdem die VM wieder hochgekommen ist, auf einem Browser `localhost:8080` einge
 
  ![Screenshot](images/74g_nginxs_vagrant.png)
 
-Wenn die Seite wie oben erscheint, hat alles funktioniert. Wir haben erfolgreich mit einem deklarativen Script einen Webserver aufgesetzt und können den Code/Content entwickeln und unabhängig von der VM abspeichern.  
+Wenn die Seite wie oben mit einem orangen Hintergrund erscheint, hat **alles** funktioniert. Wir haben erfolgreich mit einem deklarativen Script einen Webserver aufgesetzt und können den Code/Content weiterentwickeln, persistent und unabhängig von der VM abspeichern und die VM jerzeit verlustfrei zerstören und zu einem späteren Zeitpunkt ohne Aufwand wieder neu erstellen.  
 
 # Herzlichen Glückwunsch
 
