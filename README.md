@@ -401,8 +401,9 @@ Nachdem das gesamte Webserver-Verzeichnis auf den **Shared-Folder** (/vagrant) k
   ...Kontrolle im Browser
   ![Screenshot](images/66b_nginx_webserver-konfig.png)
 
-Anpassung des files **provision.sh**, um diese Änderungen persistent zu machen. Jedes Mal wenn die VM neu erstellt wird (`vagrant distroy` / `vagrant up`) soll sichergestellt sein, dass das neue Standard-Config-File gleich wieder gelöscht - und mit dem überarbeiteten Config-File ersetzt wird
-> `$ vi provision.sh ` _Shellscript anpassen_<br>
+Es folgen nun noch die Anpassung des files **provision.sh**, um diese Änderungen persistent zu machen. Jedes Mal wenn die VM neu erstellt wird (`vagrant distroy` / `vagrant up`) soll sichergestellt sein, dass das neue Standard-Config-File gleich wieder gelöscht - und mit dem überarbeiteten Config-File ersetzt wird
+> `$ rm -rf /etc/nginx/sites-enabled ` _Verzeichnis inkl. Content löschen_<br>
+> `$ cp -r /vagrant/sites-enabled /etc/nginx ` _Aktuelles Config-file ins VM-Verzeichnis kopieren_<br>
   ![Screenshot](images/75k_nginx_vagrant_configfiles_anpassen.png)
 
 
