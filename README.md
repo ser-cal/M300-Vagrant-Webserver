@@ -333,7 +333,7 @@ Bei der anschliessenden Überprüfung auf dem Host-Browser erkennen wir nun aber
 Der Grund, weshalb unsere Verbindung noch nicht funkioniert, ist einmal mehr im Config-file zu suchen. Wir haben zwar den Portforwarding-Eintrag im Vagrantfile gespeichert, aber dieses wurde seither noch nicht aktiviert.
 **Wichtig:** Um das abgeänderte Vagrantfile zu aktivieren, reicht ein **Reboot** (oder hier "Reload" genannt). Der Parameter **`--provision`** muss in diesem Fall **NICHT** ausgeführt werden. Das wäre nur nötig, wenn das verlinkte Shellscript (**provision.sh**) abgeändert worden wäre. Das ist hier allerdings **NICHT** der Fall.<br>
 
-Hier der Beweis:
+Hier der Beweis :
 > `$ vagrant reload ` _VM rebooten - Portforwarding **80** auf **8080** wird gesetzt_<br>
   ![Screenshot](images/61c_nginx_Port-forwarding_hostseitig.png)
 
