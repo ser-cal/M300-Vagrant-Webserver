@@ -479,7 +479,7 @@ Nachdem die VM wieder hochgekommen ist, auf einem Browser `localhost:8080` einge
 Wenn die Seite wie oben mit einem orangen Hintergrund erscheint, hat **alles** funktioniert. 
 
 ## Review
-Wir haben erfolgreich mit einem **deklarativen Script**  einen Webserver aufgesetzt und können den Code/Content beliebig weiterentwickeln, persistent und unabhängig von der VM abspeichern und diese jerzeit verlustfrei zerstören und zu einem späteren Zeitpunkt **ohne Aufwand** wieder neu erstellen.  
+Wir haben erfolgreich mit einem **deklarativen Script**  einen Webserver aufgesetzt und können den Code/Content beliebig weiterentwickeln, persistent und unabhängig von der VM abspeichern und diese jederzeit verlustfrei zerstören und zu einem späteren Zeitpunkt **ohne Aufwand** wieder neu erstellen.  
 
 # Herzlichen Glückwunsch
 
